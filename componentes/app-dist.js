@@ -59,35 +59,62 @@ var teachers = [{
     avatar: 'https://avatars0.githubusercontent.com/u/29287786?s=460&v=4'
 }];
 
+// const Avatar=props=><img src={props.user.avatar} alt={props.user.name} />;
+// const UserName=props=><p>{props.user.name}</p>;
+
+// const User=props=>{
+//     return (
+//         <div className="user-item">
+//          <Avatar  user={props.user}/>
+//          <UserName user={props.user} />   
+
+//         </div>
+//     )
+// };
+
+
+// const UsersList=props=>{
+//     const userList=props.list.map((user,i)=><User user={user} key={i}/>);
+//     return <div className="list-teachers">
+//         {userList}
+//     </div>
+// };
+
+// ReactDOM.render(<UsersList list={teachers}/>,document.getElementById('app2'));
+
+
+// Practica
+
 var Avatar = function Avatar(props) {
-    return React.createElement('img', { src: props.user.avatar, alt: props.user.name });
+    return React.createElement('img', { src: props.profesor.avatar, alt: props.profesor.name });
 };
-var UserName = function UserName(props) {
+
+var Nombre = function Nombre(props) {
     return React.createElement(
         'p',
         null,
-        props.user.name
+        props.profesor.name,
+        ' !-!'
     );
 };
 
-var User = function User(props) {
+var Profesor = function Profesor(props) {
     return React.createElement(
         'div',
-        { className: 'user-item' },
-        React.createElement(Avatar, { user: props.user }),
-        React.createElement(UserName, { user: props.user })
+        null,
+        React.createElement(Avatar, { profesor: props.profesor }),
+        React.createElement(Nombre, { profesor: props.profesor })
     );
 };
 
-var UsersList = function UsersList(props) {
-    var userList = props.list.map(function (user, i) {
-        return React.createElement(User, { user: user, key: i });
+var ListProfesor = function ListProfesor(props) {
+    var ListProf = props.listadeprofes.map(function (profe, i) {
+        return React.createElement(Profesor, { profesor: profe, key: i });
     });
     return React.createElement(
         'div',
-        { className: 'list-teachers' },
-        userList
+        null,
+        ListProf
     );
 };
-
-ReactDOM.render(React.createElement(UsersList, { list: teachers }), document.getElementById('app2'));
+ReactDOM.render(React.createElement(ListProfesor, { listadeprofes: teachers }), document.getElementById('app3'));

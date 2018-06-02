@@ -63,25 +63,52 @@ const teachers=[
 
 ];
 
-const Avatar=props=><img src={props.user.avatar} alt={props.user.name} />;
-const UserName=props=><p>{props.user.name}</p>;
+// const Avatar=props=><img src={props.user.avatar} alt={props.user.name} />;
+// const UserName=props=><p>{props.user.name}</p>;
 
-const User=props=>{
-    return (
-        <div className="user-item">
-         <Avatar  user={props.user}/>
-         <UserName user={props.user} />   
+// const User=props=>{
+//     return (
+//         <div className="user-item">
+//          <Avatar  user={props.user}/>
+//          <UserName user={props.user} />   
             
-        </div>
-    )
+//         </div>
+//     )
+// };
+
+
+// const UsersList=props=>{
+//     const userList=props.list.map((user,i)=><User user={user} key={i}/>);
+//     return <div className="list-teachers">
+//         {userList}
+//     </div>
+// };
+
+// ReactDOM.render(<UsersList list={teachers}/>,document.getElementById('app2'));
+
+
+
+// Practica
+
+const Avatar=(props)=>{
+    return (<img src={props.profesor.avatar} alt={props.profesor.name}/>)
 };
 
-
-const UsersList=props=>{
-    const userList=props.list.map((user,i)=><User user={user} key={i}/>);
-    return <div className="list-teachers">
-        {userList}
-    </div>
+const Nombre=(props)=>{
+    return (<p>{props.profesor.name} !-!</p>)
 };
 
-ReactDOM.render(<UsersList list={teachers}/>,document.getElementById('app2'));
+const Profesor=(props)=>{
+return ( <div>
+    <Avatar profesor={props.profesor}/>
+    <Nombre profesor={props.profesor}/>
+    </div>)
+};
+
+const ListProfesor=(props)=>{
+    const ListProf=props.listadeprofes.map((profe,i)=><Profesor profesor={profe} key={i}/>)
+    return (<div>
+        {ListProf}
+        </div>)
+};
+ReactDOM.render(<ListProfesor listadeprofes={teachers} />,document.getElementById('app3'));
